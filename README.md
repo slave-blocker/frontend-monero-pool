@@ -22,9 +22,14 @@ also place the file cors.lua in /etc/haproxy/cors.lua
 
 In your home directory, follow these instructions :
 https://github.com/monero-project/monero?tab=readme-ov-file#compiling-monero-from-source
-after that is done, again in the home directory of your server run : git clone https://github.com/jtgrassie/monero-pool.git
+after that is done, again in the home directory of your server run :
+
+git clone https://github.com/jtgrassie/monero-pool.git
+
 then place the content of src_pool into ~/monero-pool/src/
+
 then while under root : export MONERO_ROOT=/home/you/monero
+
 then @ ~/monero-pool/ , run : "make -j 4" (or whatever your #cpus)
 
 adjust your pool.conf and copy it to ~/monero-pool/build/debug/pool.conf
