@@ -5,7 +5,7 @@ In the case that you are not mining xmr on p2pool as you should, perhaps you pre
 This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router. It is not a one click install and not to be followed blindy although all steps are given, adjustments need to be made by you.
 It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software. 
 
-First and foremost thanks to jt-grassie.
+First and foremost, thank you to JT-Grassie.
 
 The frontend was adapted from the original code of supportxmr-gui. the code for the frontend alone is under src_web
 its content should be placed under /var/www/
@@ -18,7 +18,6 @@ This derives from soontm.xyz, there are two websites, first at port 4243 jt-gras
 then install haproxy : sudo apt-get install haproxy 
 then place the haproxy.cfg in /etc/haproxy/haproxy.cfg
 also place the file cors.lua in /etc/haproxy/cors.lua
-(you might need to also install the plugin on haproxy i dont remember)
 
 In your home directory, follow these instructions :
 https://github.com/monero-project/monero?tab=readme-ov-file#compiling-monero-from-source
