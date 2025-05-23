@@ -1,0 +1,1 @@
+# frontend-monero-pool
