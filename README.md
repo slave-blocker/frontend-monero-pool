@@ -25,10 +25,13 @@ after that is done, again in the home directory of your server run : git clone h
 then place the content of src_pool into ~/monero-pool/src/
 then while under root : export MONERO_ROOT=/home/you/monero
 then @ ~/monero-pool/ , run : "make -j 4" (or whatever your #cpus)
+
 adjust your pool.conf and copy it to ~/monero-pool/build/debug/pool.conf
 adjust the rc.local file changing "you" to your hostname, then place the caller.sh file in the respective home directory. The rc.local file, will make the caller.sh file be executed at startup of your machine. Adjust the caller.sh file changing the "local_ip" and the ports to your needs.
+
 copy the 50-cloud-init.yaml file to the directory /etc/netplan/50-cloud-init.yaml
 you need to adjust that to your interface name, also the "local_ip" and your router ip, wich is the gateway of the server.
+
 Also in order to use https you need to use certbot from acme, i.e. "let's Encrypt", figure out how to do that by yourself. once you have the certs, they will be concatenated into one file that also has the private key! And placed under : /etc/ssl/certs/cert.pem
 notice how the haproxy.cfg file has the lines :
 
