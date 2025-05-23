@@ -2,8 +2,8 @@
 
 In the case that you are not mining xmr on p2pool as you should, perhaps you prefer the flavour of running your own pool. Thats why this code exists, to make xmr even more resilient.
 
-This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router.
-It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software.
+This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router. It is not a one click install and not to be followed blindy although all steps are given, adjustments need to be made by you.
+It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software. 
 
 First and foremost thanks to jt-grassie.
 
@@ -33,7 +33,7 @@ then while under root : export MONERO_ROOT=/home/you/monero
 then @ ~/monero-pool/ , run : "make -j 4" (or whatever your #cpus)
 
 adjust your pool.conf and copy it to ~/monero-pool/build/debug/pool.conf
-adjust the rc.local file changing "you" to your hostname, then place the caller.sh file in the respective home directory. The rc.local file, will make the caller.sh file be executed at startup of your machine. Adjust the caller.sh file changing the "local_ip" and the ports to your needs.
+adjust the rc.local file changing "you" to your hostname, then place the caller.sh file in the respective home directory. The rc.local file, will make the caller.sh file be executed at startup of your machine. Adjust the caller.sh file changing the "local_ip" and the ports to your needs. Also replace the path to the monerod and monero-wallet-rpc according to what you have.
 
 copy the 50-cloud-init.yaml file to the directory /etc/netplan/50-cloud-init.yaml
 you need to adjust that to your interface name, also the "local_ip" and your router ip, wich is the gateway of the server.
@@ -49,6 +49,8 @@ and
 53 :
 
 for the ssl mining port : bind :4343 ssl crt /etc/ssl/certs/cert.pem
+
+The buying of the domain is up to you, using a static ipv4 address is simpler and after you have that, direct the A-RECORD from the domain to your static ip. In this case it was done twice, once for soontm.xyz and once for pool.xmr.soontm.xyz.
 
 Forward the needed ports on the router and secure your server with ssh and strict key only logins.
 
