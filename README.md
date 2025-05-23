@@ -4,6 +4,7 @@ In the case that you are not mining xmr on p2pool as you should, perhaps you pre
 
 This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router.
 It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software.
+
 First and foremost thanks to jt-grassie.
 
 The frontend was adapted from the original code of supportxmr-gui. the code for the frontend alone is under src_web
