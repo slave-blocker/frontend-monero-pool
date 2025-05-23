@@ -1,6 +1,6 @@
 # frontend-monero-pool
 
-In the case that you are not mining xmr on p2pool as you should, perhaps you prefer the flavour of running your own pool. Thats why this code exists, to make xmr even more resilient.
+In the case that you are not mining xmr on p2pool as you should, perhaps you prefer the flavour of running your own pool. Thats why this code exists, to make xmr even more resilient. Before diving into this sage you may want to look at the pics folder for some motivational spoilers.
 
 This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router. It is not a one click install and not to be followed blindy although all steps are given, adjustments need to be made by you.
 It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software. 
