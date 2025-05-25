@@ -1493,8 +1493,7 @@ function removeElement(id){
 function setCookie(n, v){
     var d = new Date();
 	d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-    document.cookie = 'wa='+(v || '')+'; expires='+d.toUTCString()+'; path=/'+'; Domain=soontm.xyz';
-    //document.cookie = cookieprefix+n+'='+(v || '')+'; expires='+d.toUTCString()+'; path=/';
+    document.cookie = 'wa='+(v || '')+'; expires='+d.toUTCString()+'; path=/'+'; Domain=soontm.xyz'+'; SameSite=Strict';
 }
 function getCookie(n){
     var nEQ = cookieprefix+n+'=',
