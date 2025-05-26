@@ -13,7 +13,7 @@ the frontend itself is loaded through the "caddy" web server.
 figure out how to install the caddy webserver yourself.
 then place the Caddyfile under /etc/caddy/Caddyfile
 
-This derives from soontm.xyz, there are two websites, first at port 4243 jt-grassies webui-embed.html wich the pool runs natively, this is by itself without caddy, @ pool.xmr.soontm.xyz. And then there is the website @ soontm.xyz wich is ran over caddy. The haproxy software does not do loadbalance, it merely serves the ports and implements the usage of the ssl certs. The cors.lua plugin also allows for the samesite cookies usage.
+This derives from soontm.xyz, there are two websites, first at port 4243 jt-grassies webui-embed.html wich the pool runs natively, this is by itself without caddy, @ pool.xmr.soontm.xyz. And then there is the website @ soontm.xyz wich is ran over caddy at port 4244. The haproxy software does not do loadbalance, it merely serves the ports and implements the usage of the ssl certs. The cors.lua plugin also allows for the samesite cookies usage.
 
 then install haproxy : sudo apt-get install haproxy 
 then place the haproxy.cfg in /etc/haproxy/haproxy.cfg
@@ -50,6 +50,10 @@ and
 for the ssl mining port : bind :4343 ssl crt /etc/ssl/certs/cert.pem
 
 The buying of the domain is up to you, using a static ipv4 address is simpler and after you have that, direct the A-RECORD from the domain to your static ip. In this case it was done twice, once for soontm.xyz and once for pool.xmr.soontm.xyz.
+
+under the directory src_web/ change the file script_min.js @ line 1496 . that is replace your domain :
+
+    document.cookie = 'wa='+(v || '')+'; expires='+d.toUTCString()+'; path=/'+'; Domain=yourdomain.xyz'+'; SameSite=Strict'; 
 
 Forward the needed ports on the router and secure your server with ssh and strict key only logins.
 
