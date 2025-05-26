@@ -55,7 +55,7 @@ under the directory src_web/ change the file script_min.js @ line 1496 . that is
 
     document.cookie = 'wa='+(v || '')+'; expires='+d.toUTCString()+'; path=/'+'; Domain=yourdomain.xyz'+'; SameSite=Strict'; 
 
-Forward the needed ports on the router and secure your server with ssh and strict key only logins.
+Forward the needed ports on the router and secure your server with ssh and strict key only logins. Disable root login, disable X11Forwarding inside the /etc/ssh/sshd_config file.
 
 Note that this pool only allows mining using the self-select option from xmrig.
 
