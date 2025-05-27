@@ -69,10 +69,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "growbag.h"
 #include "uthash.h"
 
-#define MAX_LINE 16384
-#define CLIENTS_INIT 8192
-#define RPC_BODY_MAX 65536
-#define JOB_BODY_MAX 16384
+#define MAX_LINE 262144
+#define CLIENTS_INIT 262144
+#define RPC_BODY_MAX 262144
+#define JOB_BODY_MAX 262144
 #define ERROR_BODY_MAX 512
 #define STATUS_BODY_MAX 512
 #define CLIENT_JOBS_MAX 4
@@ -804,7 +804,7 @@ block_list(char *list_start, char *list_end)
     int rc = 0;
     char *err = NULL;
     char *body = list_start;
-    char *end = list_end;
+
     uint64_t height = bt->height;
     MDB_txn *txn = NULL;
     MDB_cursor *cursor = NULL;
@@ -816,14 +816,14 @@ block_list(char *list_start, char *list_end)
     {
         err = mdb_strerror(rc);
         log_error("%s", err);
-        return rc;
+        return;
     }
     if ((rc = mdb_cursor_open(txn, db_blocks, &cursor)))
     {
         err = mdb_strerror(rc);
         log_error("%s", err);
         mdb_txn_abort(txn);
-        return rc;
+        return;
     }    
     
     MDB_cursor_op op = MDB_SET;
@@ -875,7 +875,6 @@ payment_list(char *list_start, char *list_end)
     int rc = 0;
     char *err = NULL;
     char *body = list_start;
-    char *end = list_end;
 
     MDB_txn *txn = NULL;
     MDB_cursor *cursor = NULL;
@@ -932,7 +931,6 @@ payment_list_of_address(char *list_start, char *list_end, const char *address)
     int rc = 0;
     char *err = NULL;
     char *body = list_start;
-    char *end = list_end;
 
     MDB_txn *txn = NULL;
     MDB_cursor *cursor = NULL;
@@ -3437,7 +3435,7 @@ miner_on_login(json_object *message, client_t *client)
 
     if (client->mode != MODE_SELF_SELECT)
     {
-        send_validation_error(client, "you are a glowy; wrong mode");
+        send_validation_error(client, "wrong mode, self-select required");
         return;
     }
 
@@ -3502,7 +3500,7 @@ miner_on_block_template(json_object *message, client_t *client)
 
     block_template_t *top = bstack_top(bst);
 
-    int64_t h = json_object_get_int64(height);
+    uint64_t h = (uint64_t) json_object_get_int64(height);
 
     if (top->height != h)
     {
@@ -3512,7 +3510,7 @@ miner_on_block_template(json_object *message, client_t *client)
         return;
     }
 
-    int64_t d = json_object_get_int64(difficulty);
+    uint64_t d = (uint64_t) json_object_get_int64(difficulty);
     
     if (d != top->difficulty)
     {
