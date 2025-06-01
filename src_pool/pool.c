@@ -4169,7 +4169,7 @@ listener_on_accept(evutil_socket_t listener, short event, void *arg)
     bufferevent_setcb(bev,
             base == trusted_base ? trusted_on_read : miner_on_read,
             NULL, listener_on_error, arg);
-    bufferevent_setwatermark(bev, EV_READ, 0, MAX_LINE);
+    bufferevent_setwatermark(bev, EV_READ, 0, 0);
     const client_t *c = client_add(fd, &ss, bev, base == trusted_base);
     log_info("New %s [%s:%d] connected", type, c->host, c->port);
     log_info("Pool accounts: %d, workers: %d, hashrate: %"PRIu64,
