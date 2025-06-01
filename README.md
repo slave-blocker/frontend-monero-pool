@@ -93,13 +93,15 @@ document.cookie = 'wa=' + (v || '') + '; expires=' + d.toUTCString() + '; path=/
 
 This pool only supports mining using the self-select option from XMRig.
 
-## Community and Support
+long live monero
 
-Feel free to reach out for feedback, suggestions, questions, or even mobbing attempts!
+pow or die
 
-### Donations
+Please do contact me for critics, suggestions, questions, kudos, and even mobbing attempts are welcome.
 
-If you appreciate this project, consider supporting it!
+@ irc   **monero-pt**
+
+A do nation is the best nation !
 
 **MONERO**:
 
