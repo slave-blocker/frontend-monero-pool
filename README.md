@@ -87,7 +87,7 @@ This pool only supports mining using the self-select option from XMRig.
 
 ## Community and Support
 
-Feel free to reach out for feedback, suggestions, questions, or even just to say hello!
+Feel free to reach out for feedback, suggestions, questions, or even mobbing attempts!
 
 - IRC: **monero-pt**
 
@@ -99,4 +99,5 @@ If you appreciate this project, consider supporting it!
 
 ![xmr](xmr.gif)
 
-Or help me find my first block at [soontm.xyz](http://so
+Or help me find my first block at [soontm.xyz](http://soontm.xyz).
+
