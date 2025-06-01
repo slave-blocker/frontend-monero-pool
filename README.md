@@ -2,7 +2,7 @@
 
 Thank you to JT-Grassie!
 
-Welcome to the Frontend Monero Pool! If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational images.
+Welcome to the Frontend Monero Pool! If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational spoilers.
 
 ## Overview
 
@@ -11,7 +11,7 @@ This repository contains not only the frontend code but also a comprehensive gui
 ### Key Features
 
 - Utilizes Caddy as the web server and HAProxy for port management.
-- Ensures compatibility with the latest versions of Ubuntu, Node.js, and Monero software.
+- Ensures compatibility with the latest versions of Ubuntu and Monero software.
 - Adapted from the original code of `supportxmr-gui`.
 
 ## Installation Instructions
@@ -99,5 +99,5 @@ If you appreciate this project, consider supporting it!
 
 ![xmr](xmr.gif)
 
-Or help me find my first block at [soontm.xyz](http://so
+Or help me find my first block at [soontm.xyz](http://soontm.xyz).
 
