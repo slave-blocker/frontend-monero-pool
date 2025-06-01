@@ -67,7 +67,7 @@ The frontend code is located in the `src_web` directory. Copy its contents to `/
    bind :443 ssl crt /etc/ssl/certs/cert.pem
 ```
 
-**Line 53**: for the SSL mining port:
+**Line 55**: for the SSL mining port:
 ```plaintext
    bind :4343 ssl crt /etc/ssl/certs/cert.pem
 ```
