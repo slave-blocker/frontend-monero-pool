@@ -1,5 +1,7 @@
 # Frontend Monero Pool
 
+Thank you to JT-Grassie!
+
 Welcome to the Frontend Monero Pool! If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational images.
 
 ## Overview
@@ -89,8 +91,6 @@ This pool only supports mining using the self-select option from XMRig.
 
 Feel free to reach out for feedback, suggestions, questions, or even mobbing attempts!
 
-- IRC: **monero-pt**
-
 ### Donations
 
 If you appreciate this project, consider supporting it!
@@ -99,5 +99,5 @@ If you appreciate this project, consider supporting it!
 
 ![xmr](xmr.gif)
 
-Or help me find my first block at [soontm.xyz](http://soontm.xyz).
+Or help me find my first block at [soontm.xyz](http://so
 
