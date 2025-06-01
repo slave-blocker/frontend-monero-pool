@@ -2,7 +2,7 @@
 
 Thank you to JT-Grassie!
 
-Welcome to the Frontend Monero Pool! If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational spoilers.
+This is yet another frontend for his Monero mining pool. If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational spoilers.
 
 ## Overview
 
