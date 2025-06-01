@@ -60,11 +60,17 @@ The frontend code is located in the `src_web` directory. Copy its contents to `/
 
 1. Copy the `50-cloud-init.yaml` file to `/etc/netplan/50-cloud-init.yaml` and adjust it for your network interface, `local_ip`, and router IP (gateway).
 
-2. To enable HTTPS, use Certbot from Let's Encrypt. Once you have the certificates, concatenate them into one file (including the private key) and place it under `/etc/ssl/certs/cert.pem`. Note that the `haproxy.cfg` file includes the following lines:
-   ```plaintext
+2. To enable HTTPS, use Certbot from Let's Encrypt. Once you have the certificates, concatenate them into one file (including the private key) and place it under `/etc/ssl/certs/cert.pem`. Notice how the `haproxy.cfg` file has the lines:
+
+**Line 39**: for the HTTPS:
+```plaintext
    bind :443 ssl crt /etc/ssl/certs/cert.pem
+```
+
+**Line 53**: for the SSL mining port:
+```plaintext
    bind :4343 ssl crt /etc/ssl/certs/cert.pem
-   ```
+```
 
 ### Domain Configuration
 
