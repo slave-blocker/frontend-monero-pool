@@ -1,77 +1,102 @@
-# frontend-monero-pool
+# Frontend Monero Pool
 
-In the case that you are not mining xmr on p2pool as you should, perhaps you prefer the flavour of running your own pool. Thats why this code exists, to make xmr even more resilient. Before diving into this saga you may want to look at the pics folder for some motivational spoilers.
+Welcome to the Frontend Monero Pool! If you're not mining XMR on P2Pool, you might prefer the experience of running your own pool. This project aims to enhance the resilience of XMR mining. Before diving into the setup, feel free to check the `pics` folder for some motivational images.
 
-This is not only the frontend but also the description on how to run a xmr pool on an ubuntu server 24.04, behind a normal retail router. It is not a one click install and not to be followed blindy although all steps are given, adjustments need to be made by you.
-It uses a caddy web server, and haproxy. The aim is to be all up to date in the latest ubuntu os, as in the node version of xmr, of the .js and html code regarding the latest firefox and of the pool software. 
+## Overview
 
-First and foremost, thank you to JT-Grassie.
+This repository contains not only the frontend code but also a comprehensive guide on how to set up a Monero pool on an Ubuntu 24.04 server behind a standard retail router. Please note that this is not a one-click installation; adjustments will be necessary based on your specific environment.
 
-The frontend was adapted from the original code of supportxmr-gui. the code for the frontend alone is under src_web
-its content should be placed under /var/www/
-the frontend itself is loaded through the "caddy" web server.
-figure out how to install the caddy webserver yourself.
-then place the Caddyfile under /etc/caddy/Caddyfile
+### Key Features
 
-This derives from soontm.xyz, there are two websites, first at port 4243 jt-grassies webui-embed.html wich the pool runs natively, this is by itself without caddy, @ pool.xmr.soontm.xyz. And then there is the website @ soontm.xyz wich is ran over caddy at port 4244. The haproxy software does not do loadbalance, it merely serves the ports and implements the usage of the ssl certs. The cors.lua plugin also allows for the samesite cookies usage.
+- Utilizes Caddy as the web server and HAProxy for port management.
+- Ensures compatibility with the latest versions of Ubuntu, Node.js, and Monero software.
+- Adapted from the original code of `supportxmr-gui`.
 
-then install haproxy : sudo apt-get install haproxy 
-then place the haproxy.cfg in /etc/haproxy/haproxy.cfg
-also place the file cors.lua in /etc/haproxy/cors.lua
+## Installation Instructions
 
-In your home directory, follow these instructions :
-https://github.com/monero-project/monero?tab=readme-ov-file#compiling-monero-from-source
-after that is done, again in the home directory of your server run :
+### Prerequisites
 
-git clone https://github.com/jtgrassie/monero-pool.git
+1. **Caddy Web Server**: Install Caddy and configure it to serve the frontend.
+   - Place the Caddyfile under `/etc/caddy/Caddyfile`.
 
-then place the content of src_pool into ~/monero-pool/src/
+2. **HAProxy**: Install HAProxy using the following command:
+   ```bash
+   sudo apt-get install haproxy
+   ```
+   - Place the `haproxy.cfg` file in `/etc/haproxy/haproxy.cfg`.
+   - Also, place the `cors.lua` file in `/etc/haproxy/cors.lua`.
 
-then while under root : export MONERO_ROOT=/home/you/monero
+### Frontend Setup
 
-then @ ~/monero-pool/ , run : "make -j 4" (or whatever your #cpus)
+The frontend code is located in the `src_web` directory. Copy its contents to `/var/www/`.
 
-adjust your pool.conf and copy it to ~/monero-pool/build/debug/pool.conf
-adjust the rc.local file changing "you" to your hostname, then place the caller.sh file in the respective home directory. The rc.local file, will make the caller.sh file be executed at startup of your machine. Adjust the caller.sh file changing the "local_ip" and the ports to your needs. Also replace the path to the monerod and monero-wallet-rpc according to what you have.
+### Pool Configuration
 
-copy the 50-cloud-init.yaml file to the directory /etc/netplan/50-cloud-init.yaml
-you need to adjust that to your interface name, also the "local_ip" and your router ip, wich is the gateway of the server.
+1. Clone the Monero pool repository:
+   ```bash
+   git clone https://github.com/jtgrassie/monero-pool.git
+   ```
+2. Move the contents of `src_pool` into `~/monero-pool/src/`.
 
-Also in order to use https you need to use certbot from acme, i.e. "let's Encrypt", figure out how to do that by yourself. once you have the certs, they will be concatenated into one file that also has the private key! And placed under : /etc/ssl/certs/cert.pem
-notice how the haproxy.cfg file has the lines :
+3. Set the Monero root environment variable:
+   ```bash
+   export MONERO_ROOT=/home/your_username/monero
+   ```
 
-39 :
-for the https : bind :443 ssl crt /etc/ssl/certs/cert.pem
+4. Navigate to the `~/monero-pool/` directory and compile the pool:
+   ```bash
+   make -j4  # Adjust the number based on your CPU cores
+   ```
 
-and
+5. Configure the `pool.conf` file and copy it to `~/monero-pool/build/debug/pool.conf`.
 
-53 :
+6. Edit the `rc.local` file to replace "your_username" with your hostname. Place the `caller.sh` file in the appropriate home directory. This will ensure that `caller.sh` executes at startup.
 
-for the ssl mining port : bind :4343 ssl crt /etc/ssl/certs/cert.pem
+7. Adjust the `caller.sh` file to set the correct `local_ip` and ports, and update the paths to `monerod` and `monero-wallet-rpc`.
 
-The buying of the domain is up to you, using a static ipv4 address is simpler and after you have that, direct the A-RECORD from the domain to your static ip. In this case it was done twice, once for soontm.xyz and once for pool.xmr.soontm.xyz.
+### Network Configuration
 
-under the directory src_web/ change the file script_min.js @ line 1496 . that is replace your domain :
+1. Copy the `50-cloud-init.yaml` file to `/etc/netplan/50-cloud-init.yaml` and adjust it for your network interface, `local_ip`, and router IP (gateway).
 
-    document.cookie = 'wa='+(v || '')+'; expires='+d.toUTCString()+'; path=/'+'; Domain=yourdomain.xyz'+'; SameSite=Strict'; 
+2. To enable HTTPS, use Certbot from Let's Encrypt. Once you have the certificates, concatenate them into one file (including the private key) and place it under `/etc/ssl/certs/cert.pem`. Ensure your `haproxy.cfg` file includes the following lines:
+   ```plaintext
+   bind :443 ssl crt /etc/ssl/certs/cert.pem
+   bind :4343 ssl crt /etc/ssl/certs/cert.pem
+   ```
 
-Forward the needed ports on the router and secure your server with ssh and strict key only logins. Disable root login, disable X11Forwarding inside the /etc/ssh/sshd_config file.
+### Domain Configuration
 
-Note that this pool only allows mining using the self-select option from xmrig.
+Purchasing a domain is your responsibility. Using a static IPv4 address simplifies the process. Direct the A-RECORD from your domain to your static IP. In this setup, it was done for both `soontm.xyz` and `pool.xmr.soontm.xyz`.
 
-long live monero
+### Final Adjustments
 
-pow or die
+In the `src_web/` directory, modify the `script_min.js` file at line 1496 to replace `yourdomain.xyz` with your actual domain:
+```javascript
+document.cookie = 'wa=' + (v || '') + '; expires=' + d.toUTCString() + '; path=/' + '; Domain=yourdomain.xyz' + '; SameSite=Strict';
+```
 
-Please do contact me for critics, suggestions, questions, kudos, and even mobbing attempts are welcome.
+### Security Recommendations
 
-@ irc   **monero-pt**
+- Forward the necessary ports on your router.
+- Secure your server with SSH and enforce strict key-only logins.
+- Disable root login and X11 forwarding in the `/etc/ssh/sshd_config` file.
 
-A do nation is the best nation !
+### Important Notes
 
-**MONERO** :
+This pool only supports mining using the self-select option from XMRig.
+
+## Community and Support
+
+Feel free to reach out for feedback, suggestions, questions, or even just to say hello!
+
+- IRC: **monero-pt**
+
+### Donations
+
+If you appreciate this project, consider supporting it!
+
+**MONERO**:
 
 ![xmr](xmr.gif)
 
-or help me find my first block @ soontm.xyz
-
+Or help me find my first block at [soontm.xyz](http://so
