@@ -11,7 +11,7 @@ This repository contains not only the frontend code but also a comprehensive gui
 ### Key Features
 
 - Utilizes Caddy as the web server and HAProxy for port management.
-- Ensures compatibility with the latest versions of Ubuntu and Monero software.
+- Ensures compatibility with the latest versions of Ubuntu, latest monerod, and the latest browsers.
 - Adapted from the original code of `supportxmr-gui`.
 
 ## Installation Instructions
