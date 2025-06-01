@@ -34,7 +34,7 @@ The frontend code is located in the `src_web` directory. Copy its contents to `/
 
 ### Pool Configuration
 
-1. Clone the Monero pool repository:
+1. Clone the Monero pool repository in your home directory:
    ```bash
    git clone https://github.com/jtgrassie/monero-pool.git
    ```
