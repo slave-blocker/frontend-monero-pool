@@ -47,7 +47,7 @@ The frontend code is located in the `src_web` directory. Copy its contents to `/
 
 4. Navigate to the `~/monero-pool/` directory and compile the pool:
    ```bash
-   make -j4  # Adjust the number based on your CPU cores
+   make -j4  # Adjust the number based on your CPU cores. Do not use too many cores, or your PC may start being unresponsive.
    ```
 
 5. Configure the `pool.conf` file and copy it to `~/monero-pool/build/debug/pool.conf`.
