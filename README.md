@@ -18,7 +18,7 @@ This repository contains not only the frontend code but also a comprehensive gui
 
 ### Prerequisites
 
-1. **Caddy Web Server**: Install Caddy and configure it to serve the frontend.
+1. **Caddy Web Server**: Install Caddy.
    - Place the Caddyfile under `/etc/caddy/Caddyfile`.
 
 2. **HAProxy**: Install HAProxy using the following command:
@@ -27,6 +27,34 @@ This repository contains not only the frontend code but also a comprehensive gui
    ```
    - Place the `haproxy.cfg` file in `/etc/haproxy/haproxy.cfg`.
    - Also, place the `cors.lua` file in `/etc/haproxy/cors.lua`.
+
+3. **Compile Monero from Source**:
+   To set up the mining pool, it is essential to compile Monero from source. Please follow the steps below in your user home directory:
+
+   1. **Clone the Monero Repository:**
+      ```bash
+      git clone --recursive https://github.com/monero-project/monero
+      ```
+
+   2. **Checkout the Specific Version:**
+      Navigate to the Monero directory and checkout the last version of Monero with which I was able to run the pool:
+      ```bash
+      cd monero && git checkout b089f9ee6
+      ```
+
+   3. **Initialize and Update Submodules:**
+      Ensure that all necessary submodules are initialized and updated:
+      ```bash
+      git submodule init && git submodule update
+      ```
+
+   4. **Compile Monero:**
+      Finally, compile the Monero source code. Adjust the number of jobs based on your CPU cores, but avoid using too many to prevent your system from becoming unresponsive:
+      ```bash
+      make -j4  # Replace '4' with the number of CPU cores you wish to utilize.
+      ```
+
+For additional information and requirements, please refer to the [Compiling Monero from Source](https://github.com/monero-project/monero?tab=readme-ov-file#compiling-monero-from-source) section.
 
 ### Frontend Setup
 
